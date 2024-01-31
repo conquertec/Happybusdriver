@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "756932422382",
+    "project_id": "dreambus-project",
+    "storage_bucket": "dreambus-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756932422382:android:d7dd1ab19255df524121ff",
+        "android_client_info": {
+          "package_name": "com.example.dreambus_admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0S7zxT4bgwNa2t66cmSOotVjHiiCLewA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756932422382:android:e50113a9c947bad84121ff",
+        "android_client_info": {
+          "package_name": "com.example.happy_bus_driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0S7zxT4bgwNa2t66cmSOotVjHiiCLewA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
