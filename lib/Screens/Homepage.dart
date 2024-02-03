@@ -5,8 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'SETTINGS/settings_page.dart';
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
-
+  
   @override
   State<Homepage> createState() => _HomepageState();
 }

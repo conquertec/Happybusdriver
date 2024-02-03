@@ -45,19 +45,34 @@ class _MapPageState extends State<MapPage> {
   }
 
   _getLocation() async {
+    
     try {
-      final LocationData _locationResult = await location.getLocation();
+      DocumentSnapshot documentSnapshot = await _firestore.collection('DriversData').doc(_auth.currentUser!.uid).get();
+
+      if(documentSnapshot.exists){
+        var SchoolID = documentSnapshot['School ID'];
+        var SchoolName = documentSnapshot['School'];
+
+        final LocationData _locationResult = await location.getLocation();
+         location.enableBackgroundMode(enable: true);
       await FirebaseFirestore.instance
-          .collection('Drivers')
+          .collection('DriversLocation')
           .doc(_auth.currentUser!.uid)
           .set({
         'latitude': _locationResult.latitude,
         'longitude': _locationResult.longitude,
+        'School ID': SchoolID,
+        'School': SchoolName,
+        'Approval': 'False',
       }, SetOptions(merge: true));
+      }else{
+         print('Document does not exist.');
+      }
+      
     } catch (e) {
       print(e);
     }
-    location.enableBackgroundMode(enable: true);
+   
   }
 
   Future<void> _listenLocation() async {
@@ -69,7 +84,7 @@ class _MapPageState extends State<MapPage> {
       });
     }).listen((LocationData currentlocation) async {
       await FirebaseFirestore.instance
-          .collection('Drivers')
+          .collection('DriversLocation')
           .doc(_auth.currentUser!.uid)
           .set({
         'latitude': currentlocation.latitude,
@@ -82,7 +97,7 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('Drivers').snapshots(),
+        stream: FirebaseFirestore.instance.collection('DriversLocation').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (_added) {
             mymap(snapshot);
@@ -127,7 +142,7 @@ class _MapPageState extends State<MapPage> {
               ),
               StreamBuilder(
                   stream: _firestore
-                      .collection('Drivers')
+                      .collection('DriversLocation')
                       .doc(_auth.currentUser!.uid)
                       .snapshots(),
                   builder: (context, snapshot) {
@@ -156,7 +171,7 @@ class _MapPageState extends State<MapPage> {
                                 ),
                                 StreamBuilder(
                                     stream: _firestore
-                                        .collection('Drivers')
+                                        .collection('DriversLocation')
                                         .doc(_auth.currentUser!.uid)
                                         .snapshots(),
                                     builder: (context, snapshot) {

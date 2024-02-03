@@ -314,21 +314,19 @@ class _SignupScreenState extends State<SignupScreen> {
           _isLoading = false;
         });
       });
-      _firestore.collection('Drivers').doc(_auth.currentUser!.uid).set({
+      _firestore.collection('DriversData').doc(_auth.currentUser!.uid).set({
         'School ID':'',
         'Name': _nameController.text.trim(),
         'Email': _emailController.text.trim(),
         'Phone': _PhoneNumberController.text.trim(),
         'ID': _auth.currentUser!.uid,
-        'Photo_url': 'waiting...',
         'Registered on': DateFormat.yMMMMEEEEd().format(DateTime.now()),
         'Role': 'Driver',
         'School':'',
         'Approval': 'False',
         'Image': 'waiting...',
         'Active': 'False',
-        'latitude':int.parse('0'),
-        'longitude':int.parse('0'),
+        
       });
       setState(() {
         _isLoading = false;

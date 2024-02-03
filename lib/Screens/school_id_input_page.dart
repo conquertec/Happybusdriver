@@ -16,6 +16,7 @@ class SchoolIDInputPage extends StatefulWidget {
 
 class _SchoolIDInputPageState extends State<SchoolIDInputPage> {
   var _userName = '';
+  var _schoolID = '';
   bool _isLoading = false;
 
   String _userId = '';
@@ -51,9 +52,10 @@ class _SchoolIDInputPageState extends State<SchoolIDInputPage> {
           // Do something with the user document
           setState(() {
             _userName = snapshot.get('School');
+            _schoolID = snapshot.get('ID');
           });
           // print('User document found: ${snapshot.data()}');
-          _firestore.collection('Drivers').doc(_auth.currentUser!.uid).update({
+          _firestore.collection('DriversData').doc(_auth.currentUser!.uid).update({
             'School ID': snapshot.get('ID'),
             'School': snapshot.get('School'),
           });
