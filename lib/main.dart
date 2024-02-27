@@ -14,10 +14,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => FirestoreDataProvider(),
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -41,7 +38,7 @@ class MyApp extends StatelessWidget {
               return Homepage();
             } else {
               return SignupScreen();
-            }
+            } 
           }),
     );
   }

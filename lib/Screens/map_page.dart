@@ -52,6 +52,8 @@ class _MapPageState extends State<MapPage> {
       if(documentSnapshot.exists){
         var SchoolID = documentSnapshot['School ID'];
         var SchoolName = documentSnapshot['School'];
+        var DriverName = documentSnapshot['Name'];
+        var DriverImage = documentSnapshot['Image'];
 
         final LocationData _locationResult = await location.getLocation();
          location.enableBackgroundMode(enable: true);
@@ -64,6 +66,8 @@ class _MapPageState extends State<MapPage> {
         'School ID': SchoolID,
         'School': SchoolName,
         'Approval': 'False',
+        'Name': DriverName,
+        'Image': DriverImage,
       }, SetOptions(merge: true));
       }else{
          print('Document does not exist.');
@@ -111,7 +115,7 @@ class _MapPageState extends State<MapPage> {
           return Stack(
             children: [
               GoogleMap(
-                myLocationEnabled: true,
+                myLocationEnabled: true,  
                 mapType: MapType.normal,
                 // markers: {
                 //   Marker(

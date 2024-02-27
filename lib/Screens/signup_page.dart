@@ -11,7 +11,6 @@ import 'package:intl/intl.dart';
 import 'Homepage.dart';
 import 'loginpage.dart';
 
-
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key? key}) : super(key: key);
 
@@ -44,12 +43,6 @@ class _SignupScreenState extends State<SignupScreen> {
     _PhoneNumberController.dispose();
     _schoolNamecontroller.dispose();
   }
-
- 
-
- 
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -272,7 +265,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         width: 4,
                       ),
                       InkWell(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context){
+                        onTap: () => Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
                           return LoginScreen();
                         })),
                         child: Text(
@@ -315,26 +309,25 @@ class _SignupScreenState extends State<SignupScreen> {
         });
       });
       _firestore.collection('DriversData').doc(_auth.currentUser!.uid).set({
-        'School ID':'',
+        'School ID': '',
         'Name': _nameController.text.trim(),
         'Email': _emailController.text.trim(),
         'Phone': _PhoneNumberController.text.trim(),
         'ID': _auth.currentUser!.uid,
         'Registered on': DateFormat.yMMMMEEEEd().format(DateTime.now()),
         'Role': 'Driver',
-        'School':'',
+        'School': '',
         'Approval': 'False',
         'Image': 'waiting...',
         'Active': 'False',
-        
       });
       setState(() {
         _isLoading = false;
       });
-      Navigator.push(context, MaterialPageRoute(builder: (_) {
-        return SchoolIDInputPage();    
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return SchoolIDInputPage();
       }));
-    
+
       // User signed up
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
