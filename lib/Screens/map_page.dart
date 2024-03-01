@@ -70,6 +70,7 @@ class _MapPageState extends State<MapPage> {
         'Name': DriverName,
         'Image': DriverImage,
         'Phone': DriverPhone,
+        'Active': 'False',
       }, SetOptions(merge: true));
       }else{
          print('Document does not exist.');
