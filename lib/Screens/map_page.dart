@@ -54,6 +54,7 @@ class _MapPageState extends State<MapPage> {
         var SchoolName = documentSnapshot['School'];
         var DriverName = documentSnapshot['Name'];
         var DriverImage = documentSnapshot['Image'];
+        var DriverPhone = documentSnapshot['Phone'];
 
         final LocationData _locationResult = await location.getLocation();
          location.enableBackgroundMode(enable: true);
@@ -68,6 +69,7 @@ class _MapPageState extends State<MapPage> {
         'Approval': 'False',
         'Name': DriverName,
         'Image': DriverImage,
+        'Phone': DriverPhone,
       }, SetOptions(merge: true));
       }else{
          print('Document does not exist.');
@@ -97,8 +99,10 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
+  
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('DriversLocation').snapshots(),

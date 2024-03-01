@@ -3,6 +3,7 @@ import 'package:happy_bus_driver/Screens/map_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import 'SETTINGS/settings_page.dart';
+import 'students_list.dart';
 
 class Homepage extends StatefulWidget {
   
@@ -20,12 +21,19 @@ class _HomepageState extends State<Homepage> {
         controller: PersistentTabController(initialIndex: 0),
         screens: [
           MapPage(),
+          StudentsList(),
           SettingsPage(),
         ],
         items: [
           PersistentBottomNavBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.map),
             title: 'Map',
+            activeColorPrimary: Colors.blue,
+            inactiveColorPrimary: Colors.grey,
+          ),
+          PersistentBottomNavBarItem(
+            icon: Icon(Icons.person),
+            title: 'Students',
             activeColorPrimary: Colors.blue,
             inactiveColorPrimary: Colors.grey,
           ),

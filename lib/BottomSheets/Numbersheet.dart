@@ -14,7 +14,7 @@ class UpdateNumber extends StatefulWidget {
 }
 
 class _UpdateNumberState extends State<UpdateNumber> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -24,12 +24,15 @@ class _UpdateNumberState extends State<UpdateNumber> {
   bool _isLoading = false;
 
   void UpdateNumber() {
-    if (nameController.text.length != 10) {
+    if (phoneController.text.length != 10) {
       Fluttertoast.showToast(
           msg: 'Phone number should be 10 digits long');
     } else {
-      _firestore.collection('Drivers').doc(_auth.currentUser!.uid).update({
-        'Phone': nameController.text.trim(),
+      _firestore.collection('DriversData').doc(_auth.currentUser!.uid).update({
+        'Phone': phoneController.text.trim(),
+      });
+      _firestore.collection('DriversLocation').doc(_auth.currentUser!.uid).update({
+        'Phone':phoneController.text.trim(),
       });
     }
   }
@@ -77,7 +80,7 @@ class _UpdateNumberState extends State<UpdateNumber> {
                         return null;
                       }
                     },
-                    controller: nameController,
+                    controller: phoneController,
                     decoration: InputDecoration(
                     
                       prefixIcon: Icon(

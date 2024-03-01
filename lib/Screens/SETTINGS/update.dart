@@ -28,13 +28,25 @@ class _UpdatePageState extends State<UpdatePage> {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   void _UpdateUserName() {
-    _firestore.collection('Drivers').doc(_auth.currentUser!.uid).update({
+    _firestore
+        .collection('DriversLocation')
+        .doc(_auth.currentUser!.uid)
+        .update({
+      'Name': nameController.text.trim(),
+    });
+    _firestore.collection('DriversData').doc(_auth.currentUser!.uid).update({
       'Name': nameController.text.trim(),
     });
   }
 
   void _UpdateUserPhone() {
-    _firestore.collection('Drivers').doc(_auth.currentUser!.uid).update({
+    _firestore
+        .collection('DriversLocation')
+        .doc(_auth.currentUser!.uid)
+        .update({
+      'Phone': phoneController.text.trim(),
+    });
+    _firestore.collection('DriversData').doc(_auth.currentUser!.uid).update({
       'Phone': phoneController.text.trim(),
     });
   }
@@ -75,7 +87,7 @@ class _UpdatePageState extends State<UpdatePage> {
                 ),
                 title: StreamBuilder(
                     stream: _firestore
-                        .collection('Drivers')
+                        .collection('DriversLocation')
                         .doc(_auth.currentUser!.uid)
                         .snapshots(),
                     builder: (context, snapshot) {
@@ -117,7 +129,7 @@ class _UpdatePageState extends State<UpdatePage> {
                 ),
                 title: StreamBuilder(
                     stream: _firestore
-                        .collection('Drivers')
+                        .collection('DriversLocation')
                         .doc(_auth.currentUser!.uid)
                         .snapshots(),
                     builder: (context, snapshot) {
@@ -221,13 +233,13 @@ class _UpdatePageState extends State<UpdatePage> {
                           color: ColorConstants.mainColor),
                     ),
                   ),
-                ],
+                ],   
               ),
             ),
           ),
         );
       },
-    );
+    ); 
   }
 
   void UpateDriverphone() {
@@ -275,9 +287,9 @@ class _UpdatePageState extends State<UpdatePage> {
                         Fluttertoast.showToast(
                             msg: 'The phone number should be 10 digits long');
                       } else {
-                         _UpdateUserPhone();
+                        _UpdateUserPhone();
                         Navigator.of(context).pop();
-                       
+
                         phoneController.clear();
                       }
                     },

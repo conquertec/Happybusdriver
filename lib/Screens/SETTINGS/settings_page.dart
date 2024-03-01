@@ -38,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
         .delete();
 
     await FirebaseFirestore.instance
-        .collection('Drivers')
+        .collection('DriversLocation')
         .doc(_auth.currentUser!.uid)
         .update({
       'Image': 'waiting...',
@@ -72,7 +72,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
       // Save the download URL to Firestore
       await FirebaseFirestore.instance
-          .collection('Drivers')
+          .collection('DriversLocation')
           .doc(_auth.currentUser!.uid)
           .update({
         'Image': downloadURL,
@@ -121,7 +121,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   StreamBuilder(
                       stream: _firestore
-                          .collection('Drivers')
+                          .collection('DriversLocation')
                           .doc(_auth.currentUser!.uid)
                           .snapshots(),
                       builder: (context, snapshot) {
@@ -156,7 +156,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   StreamBuilder(
                       stream: _firestore
-                          .collection('Drivers')
+                          .collection('DriversLocation')
                           .doc(_auth.currentUser!.uid)
                           .snapshots(),
                       builder: (context, snapshot) {
@@ -178,7 +178,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   StreamBuilder(
                       stream: _firestore
-                          .collection('Drivers')
+                          .collection('DriversLocation')
                           .doc(_auth.currentUser!.uid)
                           .snapshots(),
                       builder: (context, snapshot) {
@@ -268,7 +268,7 @@ class _SettingsPageState extends State<SettingsPage> {
         builder: (BuildContext context) {
           return StreamBuilder(
               stream: _firestore
-                  .collection('Drivers')
+                  .collection('DriversLocation')
                   .doc(_auth.currentUser!.uid)
                   .snapshots(),
               builder: (context, snapshot) {

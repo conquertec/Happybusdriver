@@ -27,7 +27,10 @@ class _UpdateNameState extends State<UpdateName> {
       Fluttertoast.showToast(
           msg: 'The school name should be at least 4 characters long');
     } else {
-      _firestore.collection('Drivers').doc(_auth.currentUser!.uid).update({
+      _firestore.collection('DriversLocation').doc(_auth.currentUser!.uid).update({
+        'Name': nameController.text.trim(),
+      });
+      _firestore.collection('DriversData').doc(_auth.currentUser!.uid).update({
         'Name': nameController.text.trim(),
       });
     }
