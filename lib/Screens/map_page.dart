@@ -55,9 +55,7 @@ class _MapPageState extends State<MapPage> {
         var DriverName = documentSnapshot['Name'];
         var DriverImage = documentSnapshot['Image'];
         var DriverPhone = documentSnapshot['Phone'];
-        var carModel = documentSnapshot['CarModel'];
-        var carnumber = documentSnapshot['CarNumber'];
-        var carroute = documentSnapshot['CarRoute'];
+       
 
         final LocationData _locationResult = await location.getLocation();
          location.enableBackgroundMode(enable: true);
@@ -74,9 +72,9 @@ class _MapPageState extends State<MapPage> {
         'Image': DriverImage,
         'Phone': DriverPhone,
         'Active': 'False',
-        'CarModel': carModel,
-        'CarNumber': carnumber,
-        'CarRoute': carroute,
+        'CarModel': '',
+        'CarNumber': '',
+        'CarRoute': '',
 
       }, SetOptions(merge: true));
       }else{
