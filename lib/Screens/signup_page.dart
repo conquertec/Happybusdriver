@@ -320,6 +320,9 @@ class _SignupScreenState extends State<SignupScreen> {
         'Approval': 'False',
         'Image': 'waiting...',
         'Active': 'False',
+        'CarNumber': '',
+        'CarRoute':'',
+        'CarModel':'',
       });
       setState(() {
         _isLoading = false;
