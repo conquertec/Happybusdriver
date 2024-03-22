@@ -55,34 +55,30 @@ class _SchoolIDInputPageState extends State<SchoolIDInputPage> {
             _schoolID = snapshot.get('ID');
           });
           // print('User document found: ${snapshot.data()}');
-          _firestore.collection('DriversData').doc(_auth.currentUser!.uid).update({
+          _firestore
+              .collection('DriversData')
+              .doc(_auth.currentUser!.uid)
+              .update({
             'School ID': snapshot.get('ID'),
             'School': snapshot.get('School'),
           });
           setState(() {
             _isLoading = false;
           });
-          showDialog(
-            context: context,
-            barrierDismissible:
-                false, // Prevent dismissing the dialog with a tap outside
-            builder: (context) {
-              return Center(
-                child: SpinKitChasingDots(
-                  color: Colors.white,
-                ),
-              );
-            },
-          );
-
-          Future.delayed(Duration(seconds: 2), () {
-            // Close the dialog box
-            Navigator.pop(context);
-
-            // Move to another page (you can replace SecondPage with the desired page)
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Homepage()));
-          });
+          // showDialog(
+          //   context: context,
+          //   barrierDismissible:
+          //       false, // Prevent dismissing the dialog with a tap outside
+          //   builder: (context) {
+          //     return Center(
+          //       child: SpinKitChasingDots(
+          //         color: Colors.white,
+          //       ),
+          //     );
+          //   },
+          // );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Homepage()));
         } else {
           setState(() {
             _isLoading = false;

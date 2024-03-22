@@ -55,6 +55,7 @@ class _MapPageState extends State<MapPage> {
         var DriverName = documentSnapshot['Name'];
         var DriverImage = documentSnapshot['Image'];
         var DriverPhone = documentSnapshot['Phone'];
+        var DriverID = documentSnapshot['ID'];
        
 
         final LocationData _locationResult = await location.getLocation();
@@ -70,11 +71,12 @@ class _MapPageState extends State<MapPage> {
         'Approval': 'False',
         'Name': DriverName,
         'Image': DriverImage,
-        'Phone': DriverPhone,
+        'Phone': DriverPhone,  
         'Active': 'False',
         'CarModel': '',
         'CarNumber': '',
         'CarRoute': '',
+        'ID': DriverID,
 
       }, SetOptions(merge: true));
       }else{
