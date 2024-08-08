@@ -3,7 +3,7 @@ name: Deploy Flutter App to Firebase App Distribution (Android)
 on:
   push:
     branches:
-      - master  # Trigger deployment when pushing to the master branch (or adjust to your preferred branch)
+      - main  # Trigger deployment when pushing to the master branch (or adjust to your preferred branch)
 
 jobs:
   build:
