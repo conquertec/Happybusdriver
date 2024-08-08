@@ -3,7 +3,7 @@ name: Deploy Flutter App to Firebase App Distribution (Android)
 on:
   push:
     branches:
-      - main  # Trigger deployment when pushing to the master branch (or adjust to your preferred branch)
+      - master  # Trigger deployment when pushing to the master branch (or adjust to your preferred branch)
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2  # Set up Flutter on the runner
         with:
-          flutter-version: '3.22.1' # Specify the Flutter version to use
+          flutter-version: '3.22.3' # Specify the Flutter version to use
 
       - name: Install dependencies
         run: flutter pub get  # Install Flutter dependencies defined in pubspec.yaml
