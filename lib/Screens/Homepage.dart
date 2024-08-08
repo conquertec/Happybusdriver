@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:happy_bus_driver/Screens/map_page.dart';
 import 'package:happy_bus_driver/Screens/school_id_input_page.dart';
 import 'package:happy_bus_driver/color/constant_colors.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import 'SETTINGS/settings_page.dart';
 import 'students_list.dart';
@@ -117,21 +117,17 @@ void initState() {
                     //   inactiveColorPrimary: Colors.grey,
                     // ),
                   ],
-                  confineInSafeArea: true,
+                 
                   backgroundColor: Colors.white,
                   handleAndroidBackButtonPress: true,
                   resizeToAvoidBottomInset: true,
                   stateManagement: true,
-                  hideNavigationBarWhenKeyboardShows: true,
+                 
                   decoration: NavBarDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     colorBehindNavBar: Colors.white,
                   ),
-                  popAllScreensOnTapOfSelectedTab: true,
-                  itemAnimationProperties: ItemAnimationProperties(
-                    duration: Duration(milliseconds: 200),
-                    curve: Curves.ease,
-                  ),
+                 
                   navBarStyle: NavBarStyle.style9,
                 );
               }

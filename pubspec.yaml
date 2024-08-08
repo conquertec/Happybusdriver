@@ -44,7 +44,8 @@ dependencies:
   line_icons: ^2.0.3
   location: ^5.0.3
   permission_handler: ^11.2.0
-  persistent_bottom_nav_bar: ^5.0.2
+  
+  persistent_bottom_nav_bar: ^6.2.1
   provider: ^6.1.1
   shared_preferences: ^2.2.2
 
